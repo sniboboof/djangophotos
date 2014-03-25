@@ -7,7 +7,7 @@ def prepare_deployment(branch_name="master"):
 
 
 def deploy():
-    with lcd('pwd'):
+    with lcd('.'):
 
         # With git...
         local('git pull')
