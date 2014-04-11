@@ -133,3 +133,17 @@ class AlbumAppModelTestCase(TestCase):
         tempphoto.tags.add(temptag)
         expectedtag = tempphoto.tags.get(name='testtag')
         self.assertEqual(temptag, expectedtag)
+
+    def testUnicode(self):
+        tempowner = models.User.objects.create(name='jack',
+                                               pwdhash='fiddlefaddle',
+                                               email='jim@darkmagic.com')
+        self.assertEqual(tempowner.name, str(tempowner))
+        tempphoto = models.Photo.objects.create(filename='busy.jpg',
+                                                owner=tempowner)
+        self.assertEqual(tempphoto.filename, str(tempphoto))
+        temptag = models.Tag.objects.create(name='testtag')
+        self.assertEqual(temptag.name, str(temptag))
+        tempalbum = models.Album.objects.create(name='testalbum',
+                                                owner=tempowner)
+        self.assertEqual(tempalbum.name, str(tempalbum))
