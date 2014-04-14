@@ -1,3 +1,5 @@
+A multi-step assignment for Code Fellows
+
 This is a photo viewing web app made with Django
 
 django project: Album Project
