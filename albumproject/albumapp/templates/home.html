@@ -2,10 +2,10 @@
 
 {% block body %}
 {% for album in albums %}
-<div id='albumdisplay' style='float-left'>
+<div id='albumdisplay' float=left>
     <h3>{{album.name}}</h3>
     <a href="{% url 'albumapp.views.album_view' album.pk %}">
-    <img src="{{ album.photos.first.image.url }}" width=100px height=100px alt="{{ album.name }}"/><br>
+    <img src="{{ album.photos.first.image.url }}" width=100px height=100px alt="{{ album.name }}"/>
     </a>
 </div>
 {% endfor %}
