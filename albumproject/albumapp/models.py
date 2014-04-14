@@ -18,12 +18,18 @@ class Tag(models.Model):
 
 
 class Photo(models.Model):
-    filename = models.CharField(max_length=128)
     owner = models.ForeignKey(User)
     tags = models.ManyToManyField(Tag)
+    height = models.IntegerField(blank=True, null=True, default=0)
+    width = models.IntegerField(blank=True, null=True, default=0)
+    image = models.ImageField(
+        upload_to='%Y/%m/%d',
+        height_field='height',
+        width_field='width',
+        )
 
     def __unicode__(self):
-        return self.filename
+        return unicode(self.pk)
 
 
 class Album(models.Model):

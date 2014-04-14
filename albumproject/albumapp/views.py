@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from models import User, Photo, Album, Tag
 
 
 def front_view(request):
@@ -6,7 +7,7 @@ def front_view(request):
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'albums': Album.objects.all()})
 
 
 def album_view(request, albumid):

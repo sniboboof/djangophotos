@@ -1,1 +1,11 @@
-{% extends base.html %}
+{% extends "base.html" %}
+
+{% block body %}
+{% for album in albums %}
+<div id='albumdisplay' style='float-left'>
+    <a href="{% url 'albumapp.views.album_view' album.pk %}">
+    <img src="{{ album.photos.first.url }}" width="{{ album.photos.first.width }}" height="{{ album.photos.first.height }}" alt="{{ album.name }}">
+    </a>
+</div>
+{% endfor %}
+{% endblock %}
