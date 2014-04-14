@@ -22,4 +22,5 @@ def photo_view(request, photoid):
 
 def tag_view(request, tagid):
     mytag = Tag.objects.get(pk=tagid)
-    return render(request, 'tag.html', {'photos': mytag.photos.all()})
+    taggedphotos = Photo.objects.filter(tags=mytag).all()
+    return render(request, 'tag.html', {'photos': taggedphotos, 'tag': mytag})

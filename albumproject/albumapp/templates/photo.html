@@ -1,4 +1,10 @@
 {% extends "base.html" %}
 
 {% block body %}
+<img src="{{photo.image.url}}" height={{photo.image.height}} width={{photo.image.width}}/>
+<p>
+    {% for tag in photo.tags.all %}
+        <a href="{% url 'albumapp.views.tag_view' tag.pk %}">{{tag.name}}</a>
+    {% endfor %}
+</p>
 {% endblock %}

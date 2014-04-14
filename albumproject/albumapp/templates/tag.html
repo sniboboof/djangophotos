@@ -1,4 +1,12 @@
 {% extends "base.html" %}
 
 {% block body %}
+<h2>{{tag.name}}</h2>
+{% for photo in photos %}
+<div id='photodisplay' float=left>
+    <a href="{% url 'albumapp.views.photo_view' photo.pk %}">
+    <img src="{{ photo.image.url }}" width=100px height=100px alt="{{ photo.pk }}"/>
+    </a>
+</div>
+{% endfor %}
 {% endblock %}
